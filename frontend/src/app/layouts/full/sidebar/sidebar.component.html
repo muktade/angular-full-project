@@ -1,0 +1,15 @@
+<mat-nav-list appAccordion>
+    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuItem()" routerLinkActive="selected"
+        group="{{menuitem.state}}">
+        <!-- try korchi -->
+        <!-- <span>{{menuitem.role}}<b>|{{tokenPayload.role}}</b></span> -->
+
+        <a appAccordionToggle [routerLink]="['/cafe', menuitem.state] "
+            *ngIf="(tokenPayload.role === menuitem.role || menuitem.role==='')">
+            <mat-icon>{{menuitem.icon}}</mat-icon>
+            <span>{{menuitem.name}}</span>
+            <span fxFlex></span>
+            <!-- <span>{{menuitem.role}}</span> -->
+        </a>
+    </mat-list-item>
+</mat-nav-list>

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialogRef,
+  MatDialogConfig,
+  MatDialog,
+} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from '../services/snackbar.service';
@@ -18,6 +22,7 @@ export class LoginComponent implements OnInit {
   responseMessage: any;
   constructor(
     private formBuilder: FormBuilder,
+    private dialog: MatDialog,
     private router: Router,
     private userService: UserService,
     private snackbarServices: SnackbarService,
@@ -34,6 +39,15 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
+
+  signUp() {
+    // console.log('its ok');
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '550px';
+    this.dialog.open(SignupComponent, dialogConfig);
+  }
+
   handleLogin() {
     //
     this.ngxService.start();

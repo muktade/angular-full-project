@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialogRef,
+  MatDialog,
+  MatDialogConfig,
+} from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
+
 import { Router } from '@angular/router';
 // import { FileValidator } from 'ngx-material-file-input';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
@@ -31,6 +37,7 @@ export class SignupComponent implements OnInit {
     private userService: UserService,
     private snackbarServices: SnackbarService,
     private dialogRef: MatDialogRef<SignupComponent>,
+    private dialog: MatDialog,
     private ngxService: NgxUiLoaderService
   ) {
     /////////////
@@ -59,6 +66,12 @@ export class SignupComponent implements OnInit {
       ],
       password: ['', [Validators.required]],
     });
+  }
+
+  loginAction() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '400px';
+    this.dialog.open(LoginComponent, dialogConfig);
   }
 
   handleSubmit() {

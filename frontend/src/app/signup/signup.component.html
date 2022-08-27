@@ -76,5 +76,6 @@
 <mat-dialog-actions align="center">
     <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
         [disabled]="!(signupForm.valid && signupForm.dirty)">Submit</button>
+    <button mat-raised-button color="primary" mat-dialog-close (click)="loginAction()">Go For Login</button>
     <button mat-raised-button color="primary" mat-dialog-close>Close</button>
 </mat-dialog-actions>

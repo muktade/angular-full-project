@@ -5,10 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './product-view.component.html',
   styleUrls: [
     './product-view.component.scss',
-    // '../../../../assets/styles/css/all.min.css',
-    // '../../../../assets/styles/css/bootstrap.css',
-    // '../../../../assets/styles/css/responsive.css',
-    // '../../../../assets/styles/css/ui.css',],
+    '../../../../assets/styles/css/bootstrap.css',
+    '../../../../assets/styles/css/responsive.css',
+    '../../../../assets/styles/css/ui.css',
   ],
 })
 export class ProductViewComponent implements OnInit {

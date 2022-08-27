@@ -32,6 +32,29 @@ router.get("/get", (req, res) => {
   });
 });
 
+router.get("/", async (req, res) => {
+  const { page = 1, limit = 10 } = req.query;
+
+  let startValue;
+  let endValue;
+
+  if (page > 0) {
+    startValue = page * limit - limit; // 0,10,20,30
+    endValue = page * limit;
+  } else {
+    startValue = 0;
+    endValue = 10;
+  }
+
+  connection.query(
+    `select p.id, p.name, p.description, p.price, p.pic, p.status, c.id as categoryId, c.name as categoryName from product as p inner join category as c where p.categoryId=c.id LIMIT ${startValue}, ${limit}`,
+    (err, results) => {
+      if (err) console.log(err);
+      else res.json(results);
+    }
+  );
+});
+
 ///get
 router.get("/getByCategory/:id", (req, res) => {
   const id = req.params.id;

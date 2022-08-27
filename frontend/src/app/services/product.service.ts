@@ -45,4 +45,14 @@ export class ProductService {
   getById(id: any) {
     return this.httpClient.get(this.url + '/product/getById/' + id);
   }
+
+  ////////for view product
+  getAllProducts(limitOfResults = 9, page: any) {
+    return this.httpClient.get(this.url + '/product', {
+      params: {
+        limit: limitOfResults.toString(),
+        page: page,
+      },
+    });
+  }
 }

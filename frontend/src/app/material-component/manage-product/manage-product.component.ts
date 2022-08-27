@@ -37,13 +37,14 @@ export class ManageProductComponent implements OnInit {
   ngOnInit(): void {
     this.ngxService.start();
     this.tableData();
-    this.view();
+    // this.view();
   }
 
   tableData() {
     this.productService.getProducts().subscribe(
       (res: any) => {
         this.ngxService.stop();
+        prepareProductPic(res);
         this.dataSource = new MatTableDataSource(res);
       },
       (err) => {
@@ -209,5 +210,32 @@ export class ManageProductComponent implements OnInit {
       console.log(this.pic);
     });
     this.imgURL = this.pic;
+  }
+}
+
+function prepareProductPic(res: any) {
+  // throw new Error('Function not implemented.');
+  for (let j = 0; j < res.length; j++) {
+    // debugger;
+    let ia = res[j];
+    console.log(ia);
+    let pica = '';
+    // console.log(ia.pic);
+    if (ia.pic != null) {
+      const asc = ia.pic.data;
+      console.log(asc);
+
+      // this.pica = this.pica + String.fromCharCode(asc);
+      console.log(asc.length);
+
+      for (let i = 0; i < asc.length; i++) {
+        pica = pica + String.fromCharCode(asc[i]);
+        // console.log(pic);
+      }
+
+      // this.pic.push(this.pica);
+      // this.pica = '';
+      ia.pic = pica;
+    }
   }
 }

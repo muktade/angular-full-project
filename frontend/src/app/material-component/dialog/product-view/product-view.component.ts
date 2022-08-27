@@ -4,6 +4,8 @@ import {
   ViewEncapsulation,
   HostListener,
 } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { SignupComponent } from '../../../signup/signup.component';
 import { ProductService } from '../../../services/product.service';
 
 @Component({
@@ -18,8 +20,12 @@ import { ProductService } from '../../../services/product.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class ProductViewComponent implements OnInit {
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private dialog: MatDialog
+  ) {}
 
+  public homeComponent: any;
   public screenWidth: any;
   public screenHeight: any;
 
@@ -87,6 +93,14 @@ export class ProductViewComponent implements OnInit {
         }
       );
     }, 500);
+  }
+
+  signUp() {
+    // console.log('its ok');
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '550px';
+    this.dialog.open(SignupComponent, dialogConfig);
   }
 }
 

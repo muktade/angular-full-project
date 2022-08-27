@@ -30,6 +30,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
 import { ViewProductComponent } from './view-product/view-product.component';
+////view product
+import { ProductViewComponent } from './material-component/dialog/product-view/product-view.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: 'Loading',
@@ -56,6 +58,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ForgotPasswordComponent,
     LoginComponent,
     ViewProductComponent,
+    /////////product view
+    ProductViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SharedModule,
     HttpClientModule,
     MatAutocompleteModule,
+    /////view product
+
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
   ],
   providers: [

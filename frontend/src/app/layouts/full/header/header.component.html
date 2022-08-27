@@ -1,7 +1,9 @@
 <button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5">
     <!-- <mat-icon>account_circle</mat-icon> -->
     <!-- <mat-icon><img [src]="pice"></mat-icon> -->
-    <mat-icon> <img *ngIf="userInfo.role==='user'" src="{{pice}}"></mat-icon>
+    <mat-icon> <img *ngIf="userInfo.role==='user'" src="{{pice}}">
+        account_circle
+    </mat-icon>
     <!-- <img *ngIf="userInfo.role==='admin'">
         <mat-icon>account_circle</mat-icon> -->
 

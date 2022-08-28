@@ -2,9 +2,12 @@
     <!-- <mat-icon>account_circle</mat-icon> -->
     <!-- <mat-icon><img [src]="pice"></mat-icon> -->
     <mat-icon *ngIf="userInfo.role==='user'"> <img src="{{pice}}">
+        <div>{{userInfo.name}}</div>
     </mat-icon>
     <mat-icon *ngIf="userInfo.role==='admin'">account_circle
     </mat-icon>
+
+
     <!-- <img *ngIf="userInfo.role==='admin'">
         <mat-icon>account_circle</mat-icon> -->
 

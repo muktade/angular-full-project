@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { RouteGuardService } from '../services/route-guard.service';
+import { ProductViewComponent } from './dialog/product-view/product-view.component';
 import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { ManageOrderComponent } from './manage-order/manage-order.component';
 import { ManageProductComponent } from './manage-product/manage-product.component';
@@ -17,6 +18,14 @@ export const MaterialRoutes: Routes = [
     },
   },
   {
+    path: 'allProduct',
+    component: ProductViewComponent,
+    canActivate: [RouteGuardService],
+    data: {
+      expectedRole: ['admin', 'user'],
+    },
+  },
+  {
     path: 'product',
     component: ManageProductComponent,
     canActivate: [RouteGuardService],
@@ -24,6 +33,7 @@ export const MaterialRoutes: Routes = [
       expectedRole: ['admin'],
     },
   },
+
   {
     path: 'order',
     component: ManageOrderComponent,

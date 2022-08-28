@@ -12,6 +12,12 @@ const menuItems = [
     state: 'dashboard',
     name: 'Dashboard',
     icon: 'dashboard',
+    role: 'admin',
+  },
+  {
+    state: 'allProduct',
+    name: 'View Product',
+    icon: 'grid_on',
     role: '',
   },
   {

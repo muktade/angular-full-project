@@ -125,5 +125,18 @@ router.delete("/deleteBill/:id", (req, res) => {
     }
   });
 });
+///get bill by email
+router.get(`/getBill/:email`, (req, res) => {
+  let email = req.params.email;
+  let qur = "select * from bill where email= ?";
+  connection.query(qur, [email], (err, result) => {
+    if (!err) {
+      return res.status(200).json(result);
+    } else {
+      console.log(err);
+      return res.status(500).json(err);
+    }
+  });
+});
 ///export
 module.exports = router;

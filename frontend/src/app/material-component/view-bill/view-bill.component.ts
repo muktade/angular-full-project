@@ -8,6 +8,7 @@ import { BillService } from 'src/app/services/bill.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { GlobalConstant } from 'src/app/shared/gobal-constant';
 import { ConfirmationComponent } from '../dialog/confirmation/confirmation.component';
+import jwt_decode from 'jwt-decode';
 import { ViewBillProductsComponent } from '../dialog/view-bill-products/view-bill-products.component';
 
 @Component({
@@ -26,6 +27,8 @@ export class ViewBillComponent implements OnInit {
   ];
   dataSource: any;
   responseMessage: any;
+  token: any = localStorage.getItem('token');
+  public userInfo: any;
 
   constructor(
     private billService: BillService,
@@ -33,7 +36,10 @@ export class ViewBillComponent implements OnInit {
     private ngxService: NgxUiLoaderService,
     private snackbarService: SnackbarService,
     private router: Router
-  ) {}
+  ) {
+    this.userInfo = jwt_decode(this.token);
+    // console.log(this.userInfo);
+  }
 
   ngOnInit(): void {
     this.ngxService.start();
@@ -41,24 +47,46 @@ export class ViewBillComponent implements OnInit {
   }
 
   tableData() {
-    this.billService.getBills().subscribe(
-      (res: any) => {
-        this.ngxService.stop();
-        this.dataSource = new MatTableDataSource(res);
-      },
-      (err) => {
-        this.ngxService.stop();
-        if (err.error?.message) {
-          this.responseMessage = err.error?.message;
-        } else {
-          this.responseMessage = GlobalConstant.genericError;
+    if (this.userInfo.role === 'user') {
+      this.billService.getBillByEmail(this.userInfo.email).subscribe(
+        (res: any) => {
+          this.ngxService.stop();
+          this.dataSource = new MatTableDataSource(res);
+          console.log(this.dataSource);
+        },
+        (err) => {
+          this.ngxService.stop();
+          if (err.error?.message) {
+            this.responseMessage = err.error?.message;
+          } else {
+            this.responseMessage = GlobalConstant.genericError;
+          }
+          this.snackbarService.openSnackbar(
+            this.responseMessage,
+            GlobalConstant.error
+          );
         }
-        this.snackbarService.openSnackbar(
-          this.responseMessage,
-          GlobalConstant.error
-        );
-      }
-    );
+      );
+    } else {
+      this.billService.getBills().subscribe(
+        (res: any) => {
+          this.ngxService.stop();
+          this.dataSource = new MatTableDataSource(res);
+        },
+        (err) => {
+          this.ngxService.stop();
+          if (err.error?.message) {
+            this.responseMessage = err.error?.message;
+          } else {
+            this.responseMessage = GlobalConstant.genericError;
+          }
+          this.snackbarService.openSnackbar(
+            this.responseMessage,
+            GlobalConstant.error
+          );
+        }
+      );
+    }
   }
 
   applyFilter(event: any) {

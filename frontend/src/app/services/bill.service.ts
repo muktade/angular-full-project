@@ -26,6 +26,10 @@ export class BillService {
     return this.httpClient.get(this.url + '/bill/getBill/');
   }
 
+  getBillByEmail(email: any) {
+    return this.httpClient.get(this.url + '/bill/getBill/' + email);
+  }
+
   deleteBill(id: any) {
     return this.httpClient.delete(this.url + '/bill/deleteBill/' + id, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),

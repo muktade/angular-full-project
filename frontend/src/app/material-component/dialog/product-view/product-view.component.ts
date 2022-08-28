@@ -42,11 +42,11 @@ export class ProductViewComponent implements OnInit {
     setTimeout(() => {
       this.productService.getAllProducts(9, this.productPageCounter).subscribe(
         (res: any) => {
-          console.log(res);
+          // console.log(res);
           prepareProductPic(res);
 
           this.products = res;
-          console.log(this.products);
+          // console.log(this.products);
 
           this.loading = false;
         },
@@ -109,15 +109,15 @@ function prepareProductPic(res: any) {
   for (let j = 0; j < res.length; j++) {
     // debugger;
     let ia = res[j];
-    console.log(ia);
+    // console.log(ia);
     let pica = '';
     // console.log(ia.pic);
     if (ia.pic != null) {
       const asc = ia.pic.data;
-      console.log(asc);
+      // console.log(asc);
 
       // this.pica = this.pica + String.fromCharCode(asc);
-      console.log(asc.length);
+      // console.log(asc.length);
 
       for (let i = 0; i < asc.length; i++) {
         pica = pica + String.fromCharCode(asc[i]);

@@ -21,7 +21,7 @@ export class AppHeaderComponent {
     this.userInfo = jwt_decode(this.token);
     console.log(this.userInfo);
     this.userPic = JSON.parse(localStorage.getItem('userPic') || '{}');
-    console.log(this.userPic);
+    // console.log(this.userPic);
     // console.log(this.pice.length);
 
     // for(let i =0; i<this.pice.length;i++){

@@ -21,9 +21,9 @@ export class AppSidebarComponent implements OnDestroy {
     public menuItems: MenuItem
   ) {
     this.tokenPayload = jwt_decode(this.token);
-    console.log(this.tokenPayload);
-    console.log(this.tokenPayload.role);
-    console.log(menuItems.getMenuItem()[1].role);
+    // console.log(this.tokenPayload);
+    // console.log(this.tokenPayload.role);
+    // console.log(menuItems.getMenuItem()[1].role);
 
     this.mobileQuery = media.matchMedia('(min-width: 768px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();

@@ -29,8 +29,9 @@
 
 </mat-dialog-content>
 <mat-dialog-actions align="center">
-    <button mat-raised-button color="primary" type="submit" (click)="handleLogin()"
-        [disabled]="!(loginForm.valid && loginForm.dirty)">Login</button>
-    <button mat-raised-button color="primary" mat-dialog-close (click)="signUp()">Go For SignUp</button>
-    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+    <button mat-raised-button style="background-color: rgb(3, 3, 156);color: white;" type="submit"
+        (click)="handleLogin()" [disabled]="!(loginForm.valid && loginForm.dirty)">Login</button>
+    <button mat-raised-button color="primary" (click)="signUp()">Go For
+        SignUp</button>
+    <button mat-raised-button style="background-color: black;color: white;" mat-dialog-close>Close</button>
 </mat-dialog-actions>
